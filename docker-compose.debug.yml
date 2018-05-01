@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  nickolas:
+    image: nickolas
+    build: .
+    environment:
+      NODE_ENV: development
+    ports:
+      - 1337:1337
+      - 9229:9229
+    ## set your startup file here
+    command: node --inspect index.js
