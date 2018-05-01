@@ -23,7 +23,7 @@ module.exports.connections = {
 
   dbServerDEV: {
     adapter: 'sails-postgresql',
-    host: 'dockervm-t6duxyf2.cloudapp.net',
+    host: 'localhost',//'dockervm-t6duxyf2.cloudapp.net',
     port: '5435',
     user: 'postgres', // optional
     password: '123456', // optional
