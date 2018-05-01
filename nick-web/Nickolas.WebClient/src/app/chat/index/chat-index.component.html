@@ -1,0 +1,15 @@
+<!-- <ng-progress></ng-progress> -->
+<!-- <div class="row">
+  <div class="col-md-12">
+     {{Data | json}} 
+  </div>
+</div> -->
+<div class="row">
+  <div class="col-md-6">
+    <chatbot [message]="messageToAdd" [ptfData]="ptf" [incident]="incidentToSend" [enableButtons]="chatbot_EnableButtons" (onAnswer)="chatbot_onAnswer($event)"></chatbot>
+  </div>
+  <div class="col-md-6">
+    <detail [selectedApplicationId]="selectedApplication" (onLoadIncidents)="detail_onLoadIncidents($event)" (onLoadSuggestions)="detail_onLoadSuggestions($event)"
+      (onSendSimpleMessage)="detail_onSendSimpleMessage($event)" (onSendIncidentId)="detail_onSendIncidentId($event)"></detail>
+
+  </div>

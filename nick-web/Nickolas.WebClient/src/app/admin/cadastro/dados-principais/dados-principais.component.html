@@ -1,0 +1,31 @@
+<div id="PainelPrincipal">    
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="ptf">PTF</label>
+                <select id="ptf" (change)="onPtfChange($event.target.value)" class="form-control form-control-sm">
+                    <option value="0">Selecione...</option>
+                    <option *ngFor="let p of DadosPTF" value="{{p.seqPtf}}">{{p.versao}}.{{p.sprint}}.{{p.release}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="modulo">Módulo</label>
+                <select id="modulo" (change)="onModuloChange($event.target.value)" class="form-control form-control-sm">
+                    <option value="0">Selecione...</option>
+                    <option *ngFor="let m of DadosModulo" value="{{ m.seq_modulo }}">{{ m.descricao }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="aplicacao">Aplicação</label>
+                <select id="aplicacao" (change)="onAplicacaoChange($event.target.value)" class="form-control form-control-sm">
+                    <option value="0">Selecione...</option>
+                    <option *ngFor="let a of DadosAplicacao" value="{{ a.seq_aplicacao }}">{{a.desc_aplicacao}}</option>
+                </select>
+            </div>
+        </div>
+    </div>    
+</div>

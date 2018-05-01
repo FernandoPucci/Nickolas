@@ -1,0 +1,178 @@
+div[data-role='chat'] {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 10px;
+  height: calc(100vh - 100px);
+  overflow: auto;
+  background-color: #f6f6f6;
+  padding: 10px;
+}
+
+div[contenteditable] {
+  border: 1px solid #ccc;
+  height: 100px;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.btn {
+  width: 100%;
+}
+
+.bot {
+  background-image: url('/assets/Nickolas.png');
+  height: 98px;
+  width: 98px;
+  margin-top: 40px;
+  border-radius: 4px;
+}
+
+.speeh-header{
+  font-size: 10px;
+  color: #dbdbdb;
+  text-align: right;
+  font-weight: 400;
+  padding-bottom: 2px;
+}
+.msgRate{
+  font-weight: bolder;
+  text-align: center;
+}
+
+.speech-bubble {
+  box-shadow: 2px 2px 25px;
+  position: relative;
+  color: #ffffff;
+  padding: 15px;
+  margin-top: 60px;
+  background: #2980b9;
+  border-radius: .4em;
+  padding-bottom: 10px;
+  margin-bottom: -18px;
+  animation: fadein 800ms;
+  -moz-animation: fadein 800ms;
+  /* Firefox */
+  -webkit-animation: fadein 800ms;
+  /* Safari and Chrome */
+  -o-animation: fadein 800ms;
+  /* Opera */
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 59%;
+  width: 0;
+  height: 0;
+  border: 40px solid transparent;
+  border-top-color: #2980b9;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -180px;
+ /* margin-left: calc(40vw - 920px);*/
+  margin-bottom: -38px;
+  animation: fadein 800ms;
+  -moz-animation: fadein 800ms;
+  /* Firefox */
+  -webkit-animation: fadein 800ms;
+  /* Safari and Chrome */
+  -o-animation: fadein 800ms;
+  /* Opera */
+}
+
+.speech-bubble2 {
+  box-shadow: 2px 2px 25px;
+  position: relative;
+  color: #f6f6f6;
+  text-align: right;
+  padding: 15px;
+  margin-top: 60px;
+  background: #9a9a9a;
+  border-radius: .4em;
+  padding-bottom: 10px;
+  margin-bottom: -30px;
+  animation: fadein 800ms;
+  -moz-animation: fadein 800ms;
+  /* Firefox */
+  -webkit-animation: fadein 800ms;
+  /* Safari and Chrome */
+  -o-animation: fadein 800ms;
+  /* Opera */
+}
+
+.speech-bubble2:after {
+  content: '';
+  position: absolute;
+  right: -35px;
+  top: 1%;
+  width: 0;
+  height: 0;
+  border: 40px solid transparent;
+  border-left-color: #9a9a9a;
+  border-right: 0;
+  border-bottom: 0;
+  margin-left: -180px;
+  margin-bottom: -38px;
+  animation: fadein 800ms;
+  -moz-animation: fadein 800ms;
+  /* Firefox */
+  -webkit-animation: fadein 800ms;
+  /* Safari and Chrome */
+  -o-animation: fadein 800ms;
+  /* Opera */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.ratingFinal{
+  font-weight: bolder;
+  color: blue;
+  font-size: 32px;
+  text-align: center;
+}
+
+ .row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+#chatDiv {
+  height: calc(100vh - 150px) !important;
+}

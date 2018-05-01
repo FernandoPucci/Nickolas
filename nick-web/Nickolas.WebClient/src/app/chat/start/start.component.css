@@ -1,0 +1,32 @@
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .jumbotron{
+     box-shadow: 2px 2px 25px;
+     margin: 0;
+     height: calc(100vh - 100px);
+     padding-top: 35px;
+  }
+
+  .btn-primary{
+    background: #2980b9;
+  }
+
+  .display-3{
+      font-size: 3em;
+
+  }
+
+  .cartoon img{
+    background-image: url('/assets/Nickolas_big.png');
+    height:400px;
+    margin-top: -25px;
+    margin-right: -13px;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: -40px;
+    left: -15px;
+
+  }

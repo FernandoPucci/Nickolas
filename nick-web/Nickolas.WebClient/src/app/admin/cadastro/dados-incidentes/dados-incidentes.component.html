@@ -1,0 +1,75 @@
+<!-- <ng-progress></ng-progress> -->
+<div id="PainelIncidente">
+  <h6>Incidentes</h6>
+  <div class="form-group">
+    <input  type="text"      
+            #txtSearch2       
+            name="PesquisaIncidente" 
+            placeholder="Pesquisar..." 
+            maxlength="50" 
+            class="form-control" 
+            (input)="void"/>  
+    <select multiple class="form-control">
+      <option *ngFor="let i of ListaIncidentes | filterAdmin: 'titulo': txtSearch2.value" 
+              value="{{ i.seq_erro }}" 
+              (click)="onIncidenteDetail($event.target.value)"
+              >{{ i.titulo }}</option>
+    </select>
+  </div>
+  <hr/>
+  <form>
+    <div class="form-group">
+      <label for="TituloIncidente">Título</label>
+      <input type="text" name="TituloIncidente" [(ngModel)]="var_titulo" placeholder="Descrição sucinta do incidente [Limite de 50 caracteres]..." maxlength="50" class="form-control" (keyup)="onHabilitaBtn()"/>
+    </div>
+    <div class="form-group">
+      <label for="DescricaoIncidente">Descrição <i title="Dica: Com um dublo clique é possível expandir a área para digitar a descrição." class="fa fa-info-circle" aria-hidden="true"></i></label>
+      <textarea name="DescricaoIncidente" [(ngModel)]="var_descricao" placeholder="Descrição detalhada do incidente [Limite de 250 caracteres]..." maxlength="250" rows="3" class="form-control" (dblclick)="onMostrarDlg()" (keyup)="onHabilitaBtn()"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="TagsIncidente">Tags</label>
+      <input type="text" name="TagsIncidente" [(ngModel)]="var_tags" placeholder="Palavras-chave para ajudar na pesquisa [Limite de 50 caracteres]..." maxlength="50" class="form-control" (keyup)="onHabilitaBtn()"/>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <button type="button" name="AddIncidente" (click)="onSalvarIncidente()" class="btn btn-success btn-block" [disabled]="DesativarBtnVerde">
+          <i class="fa fa-plus-circle"></i>
+          {{ TxtBtnVerde }}
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" name="LimpaIncidente" (click)="onLimpaIncidente()" class="btn btn-warning btn-block" [disabled]="DesativarBtnAmarelo">
+          <span class="fa fa-eraser"></span>
+          Limpar
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" name="DelIncidente" (click)="onExcluirIncidente()" class="btn btn-danger btn-block" [disabled]="DesativarBtnVermelho">
+          <i class="fa fa-times-circle"></i> 
+          Excluir 
+        </button>
+      </div>
+    </div>
+  </form>
+  <!-- Dialog criada para permitir uma área maior para digitar a descrição -->
+  <div id="myModalIncidente" class="modal" [style.display]="MostrarDlg">    
+    <!-- Modal content -->
+    <div class="modal-content">
+        <textarea [(ngModel)]="var_descricao" placeholder="Descrição detalhada do incidente..." maxlength="250" rows="10"></textarea>
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" (click)="onSalvaDlg()" class="btn btn-success btn-block">
+              <i class="fa fa-plus-circle"></i>
+              Salvar
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" (click)="onFechaDlg()" class="btn btn-warning btn-block">
+              <span class="fa fa-sign-out" aria-hidden="true"></span>
+              Cancelar
+            </button>
+          </div>
+        </div>
+    </div>   
+  </div>
+</div>

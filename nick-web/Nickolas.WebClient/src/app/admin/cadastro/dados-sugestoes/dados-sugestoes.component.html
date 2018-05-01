@@ -1,0 +1,113 @@
+<!-- <ng-progress></ng-progress> -->
+<div id="PainelSugestao">
+  <h6>Sugestões</h6>
+  <div class="form-group">
+      <input type="text" 
+             #txtSearch3  
+             name="PesquisaSugestao" 
+             placeholder="Digite para Pesquisar ou Duplo click para pesquisa global..." 
+             maxlength="50" 
+             class="form-control"
+             (input)="void"
+             (dblclick)="onMostrarDlg(1)"/>
+      <select multiple class="form-control">
+        <option *ngFor="let s of ListaSugestao | filterAdmin: 'sugestao': txtSearch3.value" 
+                value="{{ s.seq_sugestao_erro }}" 
+                (click)="onSugestaoDetail($event.target.value)">
+                {{ s.sugestao }}</option>
+      </select>
+  </div>
+  <hr/>
+  <div style="float:right">
+    <i [style.color]="corRating" title="Média da pontuação atribuída pelo usuário (Escala de 0 a 5)" class="fa fa-star" aria-hidden="true"></i>
+    <label>{{ValorRating}}</label>
+  </div>
+  <form>
+    <div class="form-group">
+      <label for="TituloSugestao">Título</label>
+      <input type="text" name="TituloSugestao" [(ngModel)]="var_sugestao" placeholder="Descrição sucinta do sugestão [Limite de 50 caracteres]..." maxlength="50" class="form-control" (keyup)="onHabilitaBtn2()"/>
+    </div>
+    <div class="form-group">
+      <label for="DetalhesSugestao">Descrição <i title="Dica: Com um dublo clique é possível expandir a área para digitar a descrição." class="fa fa-info-circle" aria-hidden="true"></i></label>
+      <textarea name="DetalhesSugestao" [(ngModel)]="var_detalhes" placeholder="Descrição detalhada do sugestão [Limite de 250 caracteres]..." maxlength="250" class="form-control" rows="3" (dblclick)="onMostrarDlg(0)" (keyup)="onHabilitaBtn2()"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="ContornoSugestao">Contorno</label>
+      <input type="text" name="ContornoSugestao" [(ngModel)]="var_contorno" placeholder="Número do requisito de contorno [Limite de 50 caracteres]..." maxlength="50" class="form-control" (keyup)="onHabilitaBtn2()"/>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
+        <button type="button" name="AddSugestao" (click)="onSalvarSugestao()" class="btn btn-success btn-block" [disabled]="DesativarBtnVerde">
+          <i class="fa fa-plus-circle"></i>
+          {{ TxtBtnVerde }}
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" name="LimpaSugestao" (click)="onLimpaSugestao()" class="btn btn-warning btn-block" [disabled]="DesativarBtnAmarelo">
+          <span class="fa fa-eraser"></span>
+          Limpar
+        </button>
+      </div>
+      <div class="col-sm-4">
+        <button type="button" name="DelSugestao" (click)="onExcluirSugestao()" class="btn btn-danger btn-block" [disabled]="DesativarBtnVermelho">
+          <i class="fa fa-times-circle"></i> 
+          Excluir 
+        </button>
+      </div>
+    </div>
+  </form>
+  <!-- Dialog criada para permitir uma área maior para digitar a descrição -->
+  <div id="myModalSugestao" class="modal" [style.display]="MostrarDlg">    
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div *ngIf="MostrarDescricao; else elseBlock">
+        <textarea [(ngModel)]="var_detalhes" placeholder="Descrição detalhada do sugestão..." maxlength="250" rows="10" cols="141"></textarea>
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" (click)="onSalvaDlg(0)" class="btn btn-success btn-block">
+              <i class="fa fa-plus-circle"></i>
+              Salvar
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" (click)="onFechaDlg()" class="btn btn-warning btn-block">
+              <span class="fa fa-sign-out" aria-hidden="true"></span>
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #elseBlock>
+        <div class="form-group">
+            <input type="text" 
+                    #txtSearch4  
+                    placeholder="Pesquisar..." 
+                    maxlength="50" 
+                    class="form-control"
+                    (input)="void"/>
+            <select multiple class="form-control" style="height:150px">
+              <option *ngFor="let sg of ListaSugestaoGlobal | filterAdmin: 'descricao': txtSearch4.value" 
+                      value="{{ sg.seqSugestao }}"
+                      (click)="onEscolheSugestaoGlobal($event.target.value)" >
+                      {{ sg.descricao }}</option>
+            </select>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <button type="button" (click)="onSalvaDlg(1)" class="btn btn-success btn-block">
+              <i class="fa fa-plus-circle"></i>
+              Selecionar
+            </button>
+          </div>
+          <div class="col-sm-6">
+            <button type="button" (click)="onFechaDlg()" class="btn btn-warning btn-block">
+              <span class="fa fa-sign-out" aria-hidden="true"></span>
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </div>   
+  </div>
+</div>

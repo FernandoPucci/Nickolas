@@ -1,0 +1,26 @@
+<div class="form-group top-filter-div">
+  <div class="row">
+    <div class="input-group input-group-lg">
+      <input type="text" class="form-control" #txtSearch placeholder="Filtro..." (input)="void">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12" data-role="chat" #objChat>
+    <div *ngIf="IncidentsArray!=null; else elseBlock">
+      <div class="list-group" #incidentList>
+
+        <div class="list-group-item list-group-item-action flex-column align-items-start"
+          *ngFor="let incident of IncidentsArray | filterdata: 'titulo': txtSearch.value"
+          (click)="selectIncident($event, incident)">
+          <div class="d-flex w-100 justify-content-between">
+            <h6 class="mb-1">{{incident.titulo}}</h6>
+          </div>
+          <p class="mb-1">{{incident.descricao}}</p>
+        </div>
+        
+    </div>
+    </div>
+    <ng-template #elseBlock>Não foi encontrado nenhum Incidente Conhecido</ng-template>
+  </div>
+</div>

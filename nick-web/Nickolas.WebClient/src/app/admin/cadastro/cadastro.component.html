@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <dados-principais (BuscaIncidente)="onDisparaIncidente($event)"></dados-principais>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <dados-incidentes [SeqAplicacao]="aplicacao" (BuscaSugestao)="onDisparaSugestao($event)"></dados-incidentes>
+        </div>
+        <div class="col-sm-6">
+            <dados-sugestoes [SeqIncidente]="incidente"></dados-sugestoes>
+        </div>
+    </div>
+</div>

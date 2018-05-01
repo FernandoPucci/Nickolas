@@ -1,0 +1,3 @@
+Antes de rodar em PRD (node server.js) Necessário realizar build de PRD, com o comando:
+
+ng build --env=prod --output-hashing none

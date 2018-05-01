@@ -1,0 +1,68 @@
+<div class="row" id="chatOutter">
+  <div class="col-md-12 inline" data-role="chat" #objChat id="chatDiv">
+    <div class="col-md-10">
+
+      <div *ngFor="let item of messages">
+        <div [ngClass]="(item.isNickolas)?'speech-bubble':'speech-bubble2'">
+          <div class="row speeh-header">
+            <div class="col-md-12">
+              ( {{item.time | date:'dd/MM/yyyy, HH:mm:ss' }} )
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label *ngIf="item?.text?.length">
+                {{item.text}}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="bot"></div>
+    </div>
+    <br/>
+    <div *ngIf="showRating" id="rateDiv">
+      <div class="row">
+        <div class="col-md-12" *ngIf="showRateOpt==0 else elseBlock">
+          <star-rating-comp [speed]="'slow'" [labelText]="'Como me saí?'" [labelPosition]="'top'" [starType]="'svg'" [numOfStars]="5"
+            [showHalfStars]="true" (onClick)="onRate($event)" [hoverEnabled]="true" [size]="'large'" (onHoverRatingChange)="onHoverRatingChange($event)"></star-rating-comp>
+        </div>
+        <ng-template #elseBlock>
+          <div class="col-md-12 ratingFinal">
+            <i class="fa fa-thumbs-o-up fa-4" aria-hidden="true">
+              Muito Obrigado pela opinião !!
+            </i>
+          </div>
+        </ng-template>
+      </div>
+      <div class="row">
+        <div class="col-md-12 msgRate">
+          {{msgRating}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <button type="button" class="btn btn-success" (click)="btnAnswer_Click(1)" [disabled]="!enableBtnYes">
+      <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+      {{btnYesText}}
+    </button>
+  </div>
+  <div class="col-md-4">
+    <button type="button" class="btn btn-danger" (click)="btnAnswer_Click(2)" [disabled]="!enableBtnNo">
+      {{btnNoText}}
+      <i class="fa fa-thumbs-down" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="col-md-1">&nbsp;</div>
+  <div class="col-md-3">
+    <button type="button" class="btn btn-warning" (click)="refresh()" [disabled]="!enableBtnRestart">
+      {{btnRestart}}
+      <i class="fa fa-refresh" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>
