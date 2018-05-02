@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  SERVER_API_PATH: 'http://localhost:1337/api/'
+  SERVER_API_PATH: 'http://api:1337/api/'
 };

@@ -2,31 +2,34 @@ version: "3"
 
 services:
   api:
-    image: fsilvapucci/nick-api:1.0.0
+    image: fsilvapucci/nick-api:1.0.2
     command: sails lift
     container_name: api
     depends_on:
       - "db"
-    ports: ["1337"]
+    ports:
+      - "1337:1337"
     networks:
+      - front-tier
       - back-tier
  
   web:
-    image: fsilvapucci/nick-web:1.0.0
+    image: fsilvapucci/nick-web:1.0.1
     command: node server.js
     container_name: web
     depends_on:
       - "api"
     ports:
-      - "5000:8080"
+      - "5000:5000"
     networks:
       - front-tier
+      - back-tier
 
   db:
     image: fsilvapucci/nick-database:28.12.2017
     container_name: db
     ports: 
-      - "5432:5435"
+      - "5432:5432"
     volumes:
       - "db-data:/var/lib/postgresql/data"
     networks:
@@ -37,4 +40,4 @@ volumes:
 
 networks:
   front-tier:
-  back-tier:
+  back-tier: 
