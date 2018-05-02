@@ -14,7 +14,7 @@ services:
       - back-tier
  
   web:
-    image: fsilvapucci/nick-web:1.0.1
+    image: fsilvapucci/nick-web:1.0.2
     command: node server.js
     container_name: web
     depends_on:
